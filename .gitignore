@@ -4,3 +4,4 @@ npm-debug.log
 .sass-cache/
 *.css.map
 dist
+build
