@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import moment from 'moment';
+import { timeSince } from '../lib/date';
 
 class MessageRow extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class MessageRow extends Component {
         <header className="row collapsed-xs">
           <h3 className="message-username">{sender.getUsername()}</h3>
           <div className="col-xs" />
-          <time className="message-timestamp">{moment(message.get('createdAt')).fromNow()}</time>
+          <time className="message-timestamp">{timeSince(message.get('createdAt'))}</time>
         </header>
 
         <div className="message-body">
