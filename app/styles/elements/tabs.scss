@@ -1,0 +1,24 @@
+.ReactTabs__TabList {
+  display: flex;
+  margin-bottom: 1rem;
+
+  .ReactTabs__Tab {
+    flex: 1;
+    padding: 1rem 0;
+    font-weight: bold;
+    text-align: center;
+    color: map-get($colors, mediumgray);
+    cursor: pointer;
+    transition: 250ms color;
+
+    &:hover {
+      color: map-get($colors, primary);
+    }
+  }
+
+  .ReactTabs__Tab--selected {
+
+    color: map-get($colors, primary);
+    border-bottom: 2px solid map-get($colors, primary);
+  }
+}

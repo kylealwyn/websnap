@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'core/variables';
 
 // npm modules
 @import '~flexxed/source/flexxed';
@@ -11,11 +11,13 @@
 @import 'elements/forms';
 @import 'elements/buttons';
 @import 'elements/alerts';
+@import 'elements/tabs';
 
 // component styles
 // @TODO load these modularly
 @import 'components/user-select';
 @import 'components/message-row';
+@import 'components/sign-in-or-up';
 
 * {
 	box-sizing: border-box;

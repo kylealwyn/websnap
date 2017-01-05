@@ -34,8 +34,6 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <legend>Sign Up</legend>
-
         {error ? <div className="alert alert-danger">{error.message}</div> : null}
 
         <div className="form-group">

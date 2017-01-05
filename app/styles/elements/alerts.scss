@@ -11,7 +11,8 @@
 
 @each $color, $hex in $colors {
   .alert-#{$color} {
-    color: white;
-    background: $hex;
+    color: $hex;
+    background: mix($hex, white, 25%);
+    border: 1px solid mix($hex, white, 30%);
   }
 }

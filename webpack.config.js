@@ -71,7 +71,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
     new DashboardPlugin({
-      port: 3001,
+      port: 3010,
       handler: dashboard.setData
     })
   ],
