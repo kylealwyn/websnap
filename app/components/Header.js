@@ -7,14 +7,15 @@ class Header extends Component {
     router: PropTypes.object.isRequired,
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  getCurrentUser() {
+    return Parse.User.current();
+  }
+
   logout = () => {
     Parse.User.logOut().then(() => {
       this.props.router.replace('/');
     });
-  }
-
-  getCurrentUser() {
-    return Parse.User.current();
   }
 
   renderAuthenticatedNav() {

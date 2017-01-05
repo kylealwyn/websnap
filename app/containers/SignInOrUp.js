@@ -5,14 +5,6 @@ import SignInForm from '../components/SignInForm';
 import SignUpForm from '../components/SignUpForm';
 
 class SignInOrUp extends Component {
-  componentDidMount() {
-    console.log(this.state, this.props);
-  }
-
-  handleSelect() {
-    // possibly change url
-  }
-
   render() {
     return (
       <div className="container">

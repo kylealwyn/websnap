@@ -4,7 +4,6 @@ import Dropzone from 'react-dropzone';
 import UserSelect from './UserSelect';
 import { uploadFile } from '../services/file.service';
 import { sendMessage } from '../services/message.service';
-import { createNewMessageActivities } from '../services/activity.service';
 
 class NewMessage extends Component {
   static propTypes = {
@@ -42,12 +41,13 @@ class NewMessage extends Component {
 
     const { file, text, recipients } = this.state;
 
+    this.setState({ loading: true });
+
     uploadFile(file)
       .then(uploadedFile => sendMessage(recipients, text, uploadedFile))
       .then(() => this.props.router.push('/'))
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(error => this.setState({ error }))
+      .then(() => this.setState({ loading: false }));
   }
 
   render() {

@@ -43,11 +43,11 @@ class MessageList extends Component {
         {
           this.state.messages.map((m, idx) => {
             const { sender, message } = m;
-              return <MessageRow key={idx} sender={sender} message={message} />;
+            return (<MessageRow key={idx} sender={sender} message={message} />);
           })
         }
       </div>
-    )
+    );
   }
 }
 

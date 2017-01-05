@@ -12,11 +12,7 @@ class LoginForm extends Component {
     password: '',
   }
 
-  componentDidMount() {
-    console.log(this.state, this.props.router);
-  }
-
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     this.setState({ loading: true });
@@ -26,7 +22,6 @@ class LoginForm extends Component {
         this.props.router.replace('/');
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           error,
           loading: false,
@@ -38,7 +33,7 @@ class LoginForm extends Component {
     const { error, loading } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         <legend>Sign In</legend>
 
         {error ? <div className="alert alert-danger">{error.message}</div> : null}

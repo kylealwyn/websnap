@@ -12,7 +12,7 @@ class SignUpForm extends Component {
     password: '',
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     this.setState({ loading: true });
@@ -33,7 +33,7 @@ class SignUpForm extends Component {
     const { error, loading } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         <legend>Sign Up</legend>
 
         {error ? <div className="alert alert-danger">{error.message}</div> : null}

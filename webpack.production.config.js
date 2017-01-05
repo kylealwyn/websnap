@@ -11,7 +11,7 @@ module.exports = {
     entry: [ `${__dirname}/app/index.js` ],
     // Where you want the output to go
     output: {
-        path: `${__dirname}/dist/`,
+        path: `${__dirname}/docs/`,
         filename: '[name]-[hash].min.js',
         publicPath: '/'
     },
@@ -72,7 +72,7 @@ module.exports = {
             test: /\.json?$/,
             loader: 'json'
         }, {
-            test: /\.scss$/,
+            test: /\.(css|scss)$/,
             // we extract the styles into their own .css file instead of having
             // them inside the js.
             loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
