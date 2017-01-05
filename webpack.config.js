@@ -20,7 +20,24 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/'
   },
+
+  // ESLint options
+  eslint: {
+    configFile: '.eslintrc',
+    failOnWarning: false,
+    failOnError: false
+  },
+
   module: {
+    // Runs before loaders
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
+    ],
+
     loaders: [
       {
         test: /\.jsx?$/,
