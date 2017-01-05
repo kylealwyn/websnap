@@ -4,16 +4,15 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
     // The entry file. All your app roots fromn here.
     entry: [ `${__dirname}/app/index.js` ],
     // Where you want the output to go
     output: {
-        path: `${__dirname}/docs/`,
+        path: `${__dirname}/docs`,
         filename: '[name]-[hash].min.js',
-        publicPath: '/'
+        publicPath: ''
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
