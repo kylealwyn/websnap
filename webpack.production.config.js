@@ -28,10 +28,12 @@ module.exports = {
             inject: 'body',
             filename: 'index.html'
         }),
+
         // extracts the css from the js files and puts them on a separate .css file. this is for
         // performance and is used in prod environments. Styles load faster on their own .css
         // file as they dont have to wait for the JS to load.
         new ExtractTextPlugin('assets/[name]-[hash].min.css'),
+
         // handles uglifying js
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
@@ -39,10 +41,11 @@ module.exports = {
                 screw_ie8: true
             }
         }),
+
         // plugin for passing in data to the js, like what NODE_ENV we are in.
         new webpack.DefinePlugin({
           '__DEV__': false,
-            'process.env.NODE_ENV': JSON.stringify('production')
+          'process.env.NODE_ENV': JSON.stringify('production')
         })
     ],
 

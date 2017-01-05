@@ -6,9 +6,9 @@
   "scripts": {
     "postinstall": "npm run build",
     "test": "",
-    "start": "node dev-server",
-    "build": "rimraf build && webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "eslint": "eslint app"
+    "start": "NODE_ENV=development node dev-server",
+    "build": "rimraf build && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "eslint": "eslint ."
   },
   "keywords": [],
   "author": "Kyle Alwyn",
