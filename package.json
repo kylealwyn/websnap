@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "node server",
-    "build": "rimraf docs && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "start": "node dev-server",
+    "build": "rimraf build && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint app"
   },
   "keywords": [],
