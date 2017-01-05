@@ -12,7 +12,7 @@ module.exports = {
     output: {
         path: `${__dirname}/build`,
         filename: 'assets/[name]-[hash].min.js',
-        publicPath: '/assets'
+        publicPath: '/'
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
