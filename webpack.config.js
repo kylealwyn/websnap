@@ -3,6 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -49,6 +52,10 @@ module.exports = {
     new webpack.DefinePlugin({
       '__DEV__': true,
       'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+    new DashboardPlugin({
+      port: 3001,
+      handler: dashboard.setData
     })
   ],
 };
