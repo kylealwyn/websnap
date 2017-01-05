@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 import Parse from 'parse';
 import App from './components/App';
 import MessageCenter from './containers/MessageCenter';
@@ -23,5 +23,6 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute getComponent={getIndexRoute} />
     <Route path="messages/new" component={NewMessage} onEnter={requireAuth} />
+    <Redirect from="*" to="/" />
   </Route>
 );
