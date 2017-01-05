@@ -12,7 +12,7 @@ module.exports = {
     output: {
         path: `${__dirname}/docs`,
         filename: '[name]-[hash].min.js',
-        publicPath: ''
+        publicPath: 'http://kylealwyn.com/websnap/'
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
