@@ -1,3 +1,4 @@
+// Tabs Header
 .ReactTabs__TabList {
   display: flex;
   margin-bottom: 1rem;
@@ -17,8 +18,11 @@
   }
 
   .ReactTabs__Tab--selected {
-
     color: map-get($colors, primary);
     border-bottom: 2px solid map-get($colors, primary);
   }
+}
+
+// Tabs Body
+.ReactTabs__TabPanel {
 }

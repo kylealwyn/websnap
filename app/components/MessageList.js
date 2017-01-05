@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import Spinner from 'react-spinkit';
 import MessageRow from './MessageRow';
 import { getCurrentUserActivities } from '../services/activity.service';
 
-
-// import Spinner from 'react-spinkit';
 
 class MessageList extends Component {
   state = {
@@ -21,9 +20,10 @@ class MessageList extends Component {
       .then((activities) => {
         this.setState({
           activities,
-          messages: activities.map(a => ({
-            message: a.get('message'),
-            sender: a.get('actor'),
+          messages: activities.map(activity => ({
+            activity,
+            message: activity.get('message'),
+            sender: activity.get('actor'),
           })),
           loading: false,
         });
@@ -33,17 +33,48 @@ class MessageList extends Component {
       });
   }
 
+  markAsViewed = (message) => {
+    const messagesClone = this.state.messages.slice();
+    const messageIdx = messagesClone.indexOf(message);
+    const { activity } = messagesClone[messageIdx];
+
+    activity.set('viewed', true);
+    activity.save();
+
+    this.setState({
+      messages: messagesClone,
+    });
+    // TODO Persist in Parse
+  }
+
   render() {
-    if (!this.state.messages || !this.state.messages.length) {
-      return (<div>You have no messages.</div>);
+    if (this.state.loading) {
+      return <Spinner spinnerName="rotating-plane" />;
+    }
+
+    if (!this.state.messages.length) {
+      return (
+        <div className="text-center">
+          <p>No one has sent you any messages yet 😭</p>
+        </div>
+      );
     }
 
     return (
-      <div>
+      <div className="message-list">
         {
-          this.state.messages.map((m, idx) => {
-            const { sender, message } = m;
-            return (<MessageRow key={idx} sender={sender} message={message} />);
+          this.state.messages.map((msg, idx) => {
+            const { sender, message, activity } = msg;
+
+            return (
+              <MessageRow
+                key={idx}
+                sender={sender}
+                message={message}
+                viewed={activity.get('viewed')}
+                onViewed={() => this.markAsViewed(msg)}
+              />
+            );
           })
         }
       </div>

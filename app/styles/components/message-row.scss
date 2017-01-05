@@ -8,7 +8,20 @@
   }
 
   header {
+    position: relative;
     margin-bottom: 1rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: -11px;
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      background: map-get($colors, primary);
+      border: 1px solid map-get($colors, primary);
+    }
   }
 
   .message-username {
@@ -23,5 +36,11 @@
   .message-body {
     margin-bottom: 1rem;
     font-size: 1.25rem;
+  }
+}
+
+.message.message-viewed {
+  header:before {
+    background: transparent;
   }
 }

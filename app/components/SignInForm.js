@@ -65,6 +65,7 @@ class LoginForm extends Component {
             type="submit"
             value={loading ? 'Signing In...' : 'Sign In'}
             className="btn btn-primary"
+            disabled={loading}
           />
         </div>
 

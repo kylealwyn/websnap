@@ -29,7 +29,7 @@ class Header extends Component {
       <nav>
         <ul className="row collapsed-xs align-center-xs">
           <li className="m-r-sm">Hi, {currentUser.getUsername()}</li>
-          <li><button className="btn btn-danger-outline" onClick={this.logout}>Logout</button></li>
+          <li><button className="btn btn-sm btn-danger-outline" onClick={this.logout}>Logout</button></li>
         </ul>
       </nav>
     );

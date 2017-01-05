@@ -15,9 +15,12 @@
 
 // component styles
 // @TODO load these modularly
+@import 'components/header';
+@import 'components/footer';
 @import 'components/user-select';
 @import 'components/message-row';
 @import 'components/sign-in-or-up';
+@import 'components/dropzone';
 
 * {
 	box-sizing: border-box;
@@ -44,15 +47,4 @@ img {
 	main {
 		flex: 1;
 	}
-}
-
-.app-header {
-	padding: 1rem 2rem;
-	margin-bottom: 2rem;
-	border-bottom: 1px solid map-get($colors, lightgray);
-}
-
-.app-footer {
-	margin-top: 2rem;
-	padding: 1rem;
 }

@@ -12,8 +12,13 @@ class NewMessage extends Component {
 
   state = {
     text: '',
+    loading: false,
   }
 
+  /**
+   * Handles HTML5 Files
+   * @param  {[File]} acceptedFiles
+   */
   onFileDrop = (acceptedFiles) => {
     this.setState({
       file: acceptedFiles[0],
@@ -25,9 +30,10 @@ class NewMessage extends Component {
    * @param  {[type]} event HTML input event
    */
   handleInput = (event) => {
-    // prevent user from inputting more than 140 characters
-    if (this.state.text.length < 140) {
-      this.setState({ text: event.target.value });
+    // Prevent user from inputting more than 140 characters
+    const { value: text } = event.target;
+    if (text.length <= 140) {
+      this.setState({ text });
     }
   }
 
@@ -46,8 +52,17 @@ class NewMessage extends Component {
     uploadFile(file)
       .then(uploadedFile => sendMessage(recipients, text, uploadedFile))
       .then(() => this.props.router.push('/'))
-      .catch(error => this.setState({ error }))
-      .then(() => this.setState({ loading: false }));
+      .catch((error) => {
+        this.setState({
+          loading: false,
+          error,
+        });
+      });
+  }
+
+  isSubmitDisabled() {
+    const { file, text, recipients } = this.state;
+    return !recipients || !recipients.length || !text || !file;
   }
 
   render() {
@@ -69,7 +84,12 @@ class NewMessage extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="text">Message</label>
+            <div className="row collapsed-xs">
+              <label htmlFor="text">Message</label>
+              <div className="col-xs" />
+              <span>{140 - this.state.text.length} characters left</span>
+            </div>
+
             <textarea
               id=""
               className="form-element"
@@ -78,21 +98,33 @@ class NewMessage extends Component {
               maxLength="140"
             />
           </div>
+
           <div className="form-group">
             {(() => {
               if (file) {
-                return <img role="presentation" src={file.preview} />;
+                return (
+                  <div>
+                    <img role="presentation" src={file.preview} />
+                    <button
+                      className="btn btn-sm btn-danger-outline"
+                      onClick={() => this.setState({ file: null })}
+                    >
+                      Use a different photo
+                    </button>
+                  </div>
+                );
               }
 
               return (
                 <div className="form-group">
                   <label htmlFor="file">Select A Photo</label>
                   <Dropzone
+                    className="dropzone"
                     onDrop={this.onFileDrop}
                     accept="image/*"
                     multiple={false}
                   >
-                    Drop your image here
+                    Click or drag your image here
                   </Dropzone>
                 </div>
               );
@@ -100,7 +132,12 @@ class NewMessage extends Component {
           </div>
 
           <div className="text-center">
-            <input className="btn btn-primary" type="submit" value="Send Message" />
+            <input
+              className="btn btn-primary"
+              type="submit"
+              value={this.state.loading ? 'Sending...' : 'Send Message'}
+              disabled={this.isSubmitDisabled()}
+            />
           </div>
         </form>
       </div>

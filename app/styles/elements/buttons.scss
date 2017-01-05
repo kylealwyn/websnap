@@ -13,12 +13,17 @@
   font-size: 1rem;
   cursor: pointer;
   outline: none;
-  padding: 8px 12px;
+  padding: 0.5em 0.75em;
   transition: 250ms;
 
   &:hover {
     box-shadow: 0 6px 10px rgba(black, 0.36)
   }
+}
+
+.btn-sm {
+  font-size: 0.85rem;
+  padding: 0.25em 0.5em;
 }
 
 @each $color, $hex in $colors {
@@ -39,7 +44,16 @@
     box-shadow: none;
 
     &:hover {
+      color: darken($hex, 10%);
+      border-color: darken($hex, 10%);
       box-shadow: none;
     }
   }
+}
+
+[disabled] {
+  box-shadow: none;
+  opacity: 0.65;
+  pointer-events: none;
+  user-select: none;
 }
