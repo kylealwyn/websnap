@@ -66,5 +66,8 @@
     "webpack": "^1.13.0",
     "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
