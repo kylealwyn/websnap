@@ -4,6 +4,7 @@
   "description": "A disappearing photo messaging app in the vein of SnapChat.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "test": "",
     "start": "node dev-server",
     "build": "rimraf build && webpack --config ./webpack.production.config.js --progress --profile --colors",
