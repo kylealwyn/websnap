@@ -61,12 +61,12 @@ class NewMessage extends Component {
   }
 
   isSubmitDisabled() {
-    const { file, text, recipients } = this.state;
-    return !recipients || !recipients.length || !text || !file;
+    const { file, text, recipients, loading } = this.state;
+    return !recipients || !recipients.length || !text || !file || loading;
   }
 
   render() {
-    const { file } = this.state;
+    const { file, loading } = this.state;
 
     return (
       <div className="container new-message">
@@ -135,7 +135,7 @@ class NewMessage extends Component {
             <input
               className="btn btn-primary"
               type="submit"
-              value={this.state.loading ? 'Sending...' : 'Send Message'}
+              value={loading ? 'Sending...' : 'Send Message'}
               disabled={this.isSubmitDisabled()}
             />
           </div>
