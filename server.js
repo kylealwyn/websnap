@@ -7,4 +7,6 @@ const publicPath = express.static(`${__dirname}/build/assets`);
 app.use('/assets', publicPath);
 app.get('/*', function (_, res) { res.sendFile(indexPath) });
 
+app.listen(process.env.PORT || 3000);
+
 module.exports = app;
