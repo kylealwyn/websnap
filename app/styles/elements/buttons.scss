@@ -1,0 +1,45 @@
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return black; // Lighter backgorund, return dark color
+  } @else {
+    @return white; // Darker background, return light color
+  }
+}
+
+.btn {
+  border-radius: 2px;
+  box-shadow: 0 2px 7px rgba(black, 0.17);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  padding: 8px 12px;
+  transition: 250ms;
+
+  &:hover {
+    box-shadow: 0 6px 10px rgba(black, 0.36)
+  }
+}
+
+@each $color, $hex in $colors {
+  .btn-#{$color} {
+    color: set-text-color($hex);
+    background: $hex;
+    border: 1px solid $hex;
+
+    &:hover {
+      background: darken($hex, 5%);
+    }
+  }
+
+  .btn-#{$color}-outline {
+    color: $hex;
+    background: transparent;
+    border: 1px solid $hex;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

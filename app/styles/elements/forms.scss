@@ -1,0 +1,47 @@
+$border-color: #dee2e6;
+
+form {
+  legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}
+
+textarea {
+  height: 200px;
+}
+
+.form-group {
+  padding: 1rem 0;
+
+  & + .form-group {
+    border-top: 1px solid $border-color;
+  }
+
+  & > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+}
+
+.form-element {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  font-size: 1rem;
+  display: block;
+  outline: none;
+  width: 100%;
+
+  &::placeholder {
+    color: #adb5bd;
+    font-weight: lighter;
+  }
+}
+
+.form-submit {
+  padding: 1rem;
+  text-align: center;
+}

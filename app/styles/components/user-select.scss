@@ -1,0 +1,15 @@
+.user-select {
+  max-height: 300px;
+  overflow: auto;
+
+  .user-select-list {
+    li {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
+    input {
+      margin-right: 0.5em;
+    }
+  }
+}

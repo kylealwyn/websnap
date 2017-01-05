@@ -1,0 +1,27 @@
+.message {
+  // stacked messages
+  + .message {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid map-get($colors, lightgray);
+  }
+
+  header {
+    margin-bottom: 1rem;
+  }
+
+  .message-username {
+    font-size: 1rem;
+  }
+
+  .message-timestamp {
+    color: map-get($colors, mediumgray);
+    font-weight: lighter;
+  }
+
+  .message-body {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+}

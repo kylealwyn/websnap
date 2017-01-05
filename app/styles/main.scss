@@ -1,0 +1,56 @@
+@import 'variables';
+
+// npm modules
+@import '~flexxed/source/flexxed';
+
+// core styles
+@import 'core/reset';
+@import 'core/typography';
+
+// elements
+@import 'elements/forms';
+@import 'elements/buttons';
+@import 'elements/alerts';
+
+// component styles
+// @TODO load these modularly
+@import 'components/user-select';
+@import 'components/message-row';
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: $fonts;
+	font-size: 14px;
+	color: #333;
+}
+
+html, body, #root, .app {
+	height: 100%;
+}
+
+img {
+	max-width: 100%;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+
+	main {
+		flex: 1;
+	}
+}
+
+.app-header {
+	padding: 1rem 2rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid map-get($colors, lightgray);
+}
+
+.app-footer {
+	margin-top: 2rem;
+	padding: 1rem;
+}
