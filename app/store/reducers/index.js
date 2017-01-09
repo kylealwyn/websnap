@@ -1,7 +1,7 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
-const fakeReducer = () => {};
+const fakeReducer = (state = {}) => state;
 
 const rootReducer = combineReducers({
   fakeReducer,
