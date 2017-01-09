@@ -9,7 +9,7 @@ const Home = () => (
         <h1 className="m-0">Message Center</h1>
         <div className="col-xs" />
         <Link to="messages/new" className="btn btn-primary">
-          New Message
+          Send A Message
         </Link>
       </div>
     </header>

@@ -8,7 +8,7 @@ class SignUpForm extends Component {
   }
 
   state = {
-    username: '',
+    email: '',
     password: '',
   }
 
@@ -17,7 +17,7 @@ class SignUpForm extends Component {
 
     this.setState({ loading: true });
 
-    signUp(this.state.username, this.state.password)
+    signUp(this.state.email, this.state.password)
       .then(() => {
         this.props.router.replace('/');
       })
@@ -37,14 +37,15 @@ class SignUpForm extends Component {
         {error ? <div className="alert alert-danger">{error.message}</div> : null}
 
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
-            id="username"
-            type="text"
+            id="email"
+            type="email"
             className="form-element"
-            placeholder="Enter a username"
-            value={this.state.username}
-            onChange={e => this.setState({ username: e.target.value })}
+            placeholder="Enter an email"
+            value={this.state.email}
+            required
+            onChange={e => this.setState({ email: e.target.value })}
           />
         </div>
 
@@ -56,6 +57,7 @@ class SignUpForm extends Component {
             className="form-element"
             placeholder="••••••••"
             value={this.state.password}
+            required
             onChange={e => this.setState({ password: e.target.value })}
           />
         </div>

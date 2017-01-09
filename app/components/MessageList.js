@@ -44,7 +44,6 @@ class MessageList extends Component {
     this.setState({
       messages: messagesClone,
     });
-    // TODO Persist in Parse
   }
 
   render() {

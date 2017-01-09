@@ -34,7 +34,7 @@ class MessageRow extends Component {
   }
 
   startViewing() {
-    const SECONDS_TO_VIEW = 5; // seconds
+    const SECONDS_TO_VIEW = 15; // seconds to view our photos
 
     // Immediately mark as viewed
     this.props.onViewed();
@@ -59,9 +59,7 @@ class MessageRow extends Component {
   }
 
   viewPhoto = () => {
-    const { viewed } = this.props;
-
-    if (viewed) {
+    if (this.props.viewed) {
       return;
     }
 
@@ -78,15 +76,15 @@ class MessageRow extends Component {
   }
 
   renderPhoto(message) {
-    if (this.state.viewing) {
-      return (
-        <div className="message-photo">
-          <img src={message.getPhotoUrl()} role="presentation" />
-        </div>
-      );
+    if (!this.state.viewing) {
+      return null;
     }
 
-    return null;
+    return (
+      <div className="message-photo">
+        <img src={message.getPhotoUrl()} role="presentation" />
+      </div>
+    );
   }
 
   render() {

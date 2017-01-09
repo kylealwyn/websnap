@@ -11,7 +11,10 @@ class SignInOrUp extends Component {
     return (
       <div className="login">
         <div className="container">
-          <h1 className="text-center">WebSnap</h1>
+          <div className="text-center">
+            <h1>WebSnap</h1>
+          </div>
+
           <Tabs
             onSelect={this.handleSelect}
             selectedIndex={0}
